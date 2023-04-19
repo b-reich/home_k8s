@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook
+  name: nginx-test
   namespace: argocd
 spec:
   destination:
-    namespace: default
+    namespace: my-test
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: guestbook
+    path: nginx-test
     repoURL: git@github.com:b-reich/home_k8s.git
   syncPolicy:
     automated: {}
