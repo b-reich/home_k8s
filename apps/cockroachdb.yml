@@ -12,7 +12,7 @@ spec:
     helm:
       releaseName: cockroachdb
       valueFiles:
-        - ../cockroachdb/values.yml
+        - values.yml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: cockroachdb
