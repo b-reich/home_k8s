@@ -12,8 +12,9 @@ spec:
     path: apps
     repoURL: git@github.com:b-reich/home_k8s.git
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
       allowEmpty: true
       selfHeal: true
-      CreateNamespace: true
