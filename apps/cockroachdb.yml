@@ -11,8 +11,8 @@ spec:
     targetRevision: 10.0.8
     helm:
       releaseName: cockroachdb
-      #valueFiles:
-        #- ../cockroachdb/values.yaml
+      valueFiles:
+        - ../cockroachdb/values.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: cockroachdb
