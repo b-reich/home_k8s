@@ -1,0 +1,10 @@
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt
+
+storage:
+  persistentVolume:
+    enabled: true
+    size: 500Gi
