@@ -7,19 +7,4 @@ ingress:
 storage:
   persistentVolume:
     enabled: true
-    size: 20Gi
-
-tls:
-  enabled: true
-  serviceAccount:
-    # Specifies whether this ServiceAccount should be created.
-    create: true
-    # The name of this ServiceAccount to use.
-    # If not set and `create` is `true`, then a name is auto-generated.
-    name: ""
-    # Additional serviceAccount annotations (e.g. for attaching AWS IAM roles to pods)
-    annotations: {}
-  copyCerts:
-    image: busybox
-  certs:
-    certManager: true
+    size: 500Gi
