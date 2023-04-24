@@ -5,14 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: cockroachdb
-    repoURL: https://charts.cockroachdb.com/
-    targetRevision: 10.0.8
-    helm:
-      releaseName: cockroachdb
-      valueFiles:
-        - ../cockroachdb/values.yaml
+  sources:
+    - chart: cockroachdb
+      repoURL: https://charts.cockroachdb.com/
+      targetRevision: 10.0.8
+      helm:
+        releaseName: cockroachdb
+        valueFiles:
+          - $values/cockroachdb/values.yaml
+    - repoURL: git@github.com:b-reich/home_k8s.git
+      targetRevision: main
+      ref: values
   destination:
     server: "https://kubernetes.default.svc"
     namespace: cockroachdb
