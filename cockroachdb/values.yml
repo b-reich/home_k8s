@@ -438,7 +438,7 @@ init:
 
 # Whether to run securely using TLS certificates.
 tls:
-  enabled: true
+  enabled: false
   serviceAccount:
     # Specifies whether this ServiceAccount should be created.
     create: true
@@ -462,7 +462,7 @@ tls:
     # Enable if the you want cockroach db to create its own certificates
     selfSigner:
       # If set, the cockroach db will generate its own certificates
-      enabled: false
+      enabled: true
       # Run selfSigner as non-root
       securityContext:
         enabled: true
