@@ -5,16 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: wiki
-    repoURL: https://charts.js.wiki
-    targetRevision: 2.2.20
-    helm:
-      releaseName: wiki
-      valueFiles:
-        #- /wikijs/values.yml
-        #- ../wikijs/values.yml
-        - values.yml
+  sources:
+    - repoURL: https://charts.js.wiki
+      chart: wiki
+      targetRevision: 2.2.20
+      helm:
+        releaseName: wiki
+        valueFiles:
+        - $values/wikijs/values.yml
+    - repoURL: git@github.com:b-reich/home_k8s.git
+      targetRevision: main
+      ref: values
   destination:
     server: "https://kubernetes.default.svc"
     namespace: wikijs
