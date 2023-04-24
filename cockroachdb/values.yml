@@ -462,7 +462,7 @@ tls:
     # Enable if the you want cockroach db to create its own certificates
     selfSigner:
       # If set, the cockroach db will generate its own certificates
-      enabled: true
+      enabled: false
       # Run selfSigner as non-root
       securityContext:
         enabled: true

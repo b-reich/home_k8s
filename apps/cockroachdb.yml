@@ -12,7 +12,7 @@ spec:
       helm:
         releaseName: cockroachdb
         valueFiles:
-          - $values/cockroachdb/values.yaml
+        - $values/cockroachdb/values.yml
     - repoURL: git@github.com:b-reich/home_k8s.git
       targetRevision: main
       ref: values
