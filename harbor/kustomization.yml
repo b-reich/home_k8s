@@ -7,6 +7,6 @@ helmCharts:
     namespace: harbor
     repo: https://helm.goharbor.io
     releaseName: harbor
-    values: values.yaml
+    valuesFile: values.yaml
 resources:
   - namespace.yml
