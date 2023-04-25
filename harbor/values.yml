@@ -8,7 +8,7 @@ expose:
     # Note: if the "expose.type" is "ingress" and TLS is disabled,
     # the port must be included in the command when pulling/pushing images.
     # Refer to https://github.com/goharbor/harbor/issues/5291 for details.
-    enabled: none
+    enabled: true
     # The source of the tls certificate. Set as "auto", "secret"
     # or "none" and fill the information in the corresponding section
     # 1) auto: generate the tls certificate automatically
@@ -16,7 +16,7 @@ expose:
     # The tls certificate can be generated manually or by cert manager
     # 3) none: configure no tls certificate for the ingress. If the default
     # tls certificate is configured in the ingress controller, choose this option
-    certSource: secret
+    certSource: auto
     auto:
       # The common name used to generate the certificate, it's necessary
       # when the type isn't "ingress"
@@ -33,8 +33,8 @@ expose:
       notarySecretName: ""
   ingress:
     hosts:
-      core: core.harbor.k8s.reich.dev
-      notary: notary.harbor.k8s.reich.dev
+      core: core.harbor.domain
+      notary: notary.harbor.domain
     # set to the type of ingress controller if it has specific requirements.
     # leave as `default` for most ingress controllers.
     # set to `gce` if using the GCE ingress controller
@@ -44,15 +44,14 @@ expose:
     controller: default
     ## Allow .Capabilities.KubeVersion.Version to be overridden while creating ingress
     kubeVersionOverride: ""
-    className: "nginx"
+    className: ""
     annotations:
       # note different ingress controllers may require a different ssl-redirect annotation
       # for Envoy, use ingress.kubernetes.io/force-ssl-redirect: "true" and remove the nginx lines below
-      #ingress.kubernetes.io/ssl-redirect: "true"
-      #ingress.kubernetes.io/proxy-body-size: "0"
-      cert-manager.io/issuer: letsencrypt
-      #nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      #nginx.ingress.kubernetes.io/proxy-body-size: "0"
+      ingress.kubernetes.io/ssl-redirect: "true"
+      ingress.kubernetes.io/proxy-body-size: "0"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"
     notary:
       # notary ingress-specific annotations
       annotations: {}
@@ -125,7 +124,7 @@ expose:
 # the IP address of k8s node
 #
 # If Harbor is deployed behind the proxy, set it as the URL of proxy
-externalURL: https://core.harbor.k8s.reich.dev
+externalURL: https://core.harbor.domain
 
 # The internal TLS used for harbor components secure communicating. In order to enable https
 # in each components tls cert files need to provided in advance.
@@ -142,7 +141,7 @@ internalTLS:
   # core related cert configuration
   core:
     # secret name for core's tls certs
-    secretName: "harbor-secret"
+    secretName: ""
     # Content of core's TLS cert file, only available when `certSource` is "manual"
     crt: ""
     # Content of core's TLS key file, only available when `certSource` is "manual"
