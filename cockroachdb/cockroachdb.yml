@@ -1,24 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: harbor
+  name: cockroachdb
   namespace: argocd
 spec:
   project: default
   sources:
-    - chart: harbor
-      repoURL: https://helm.goharbor.io
-      targetRevision: 1.12.0
+    - chart: cockroachdb
+      repoURL: https://charts.cockroachdb.com/
+      targetRevision: 10.0.8
       helm:
-        releaseName: harbor
+        releaseName: cockroachdb
         valueFiles:
-        - $values/harbor/values.yml
+        - $values/cockroachdb/values.yml
     - repoURL: git@github.com:b-reich/home_k8s.git
       targetRevision: main
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: harbor
+    namespace: cockroachdb
   syncPolicy:
     automated:
         prune: true
