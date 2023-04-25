@@ -314,7 +314,7 @@ ingress:
   paths: [/]
   hosts:
   - db.k8s.reich.dev
-  tls: 
+  tls:
   - hosts: [db.k8s.reich.dev]
     secretName: cockroachlabs-tls
 
@@ -438,7 +438,7 @@ init:
 
 # Whether to run securely using TLS certificates.
 tls:
-  enabled: false
+  enabled: true
   serviceAccount:
     # Specifies whether this ServiceAccount should be created.
     create: true
@@ -494,7 +494,7 @@ tls:
       svcAccountAnnotations: {}
 
     # Use cert-manager to issue certificates for mTLS.
-    certManager: true
+    certManager: false
     # Specify an Issuer or a ClusterIssuer to use, when issuing
     # node and client certificates. The values correspond to the
     # issuerRef specified in the certificate.
