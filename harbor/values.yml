@@ -16,7 +16,7 @@ expose:
     # The tls certificate can be generated manually or by cert manager
     # 3) none: configure no tls certificate for the ingress. If the default
     # tls certificate is configured in the ingress controller, choose this option
-    certSource: secret
+    certSource: none
     auto:
       # The common name used to generate the certificate, it's necessary
       # when the type isn't "ingress"
@@ -369,9 +369,9 @@ harborAdminPassword: "Harbor12345"
 caSecretName: ""
 
 # The secret key used for encryption. Must be a string of 16 chars.
-secretKey: "not-a-secure-key"
+secretKey: "not-a-secure-key-blah"
 # If using existingSecretSecretKey, the key must be secretKey
-existingSecretSecretKey: ""
+#existingSecretSecretKey: ""
 
 # The proxy settings for updating trivy vulnerabilities from the Internet and replicating
 # artifacts from/to the registries that cannot be reached directly
