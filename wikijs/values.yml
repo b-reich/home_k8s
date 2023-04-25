@@ -68,7 +68,7 @@ ingress:
   className: "nginx"
   annotations:
     kubernetes.io/tls-acme: "true"
-    cert-manager.io/issuer: letsencrypt
+    cert-manager.io/cluster-issuer: letsencrypt
   hosts:
     - host: wiki.k8s.reich.dev
       paths:
