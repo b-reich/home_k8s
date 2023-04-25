@@ -49,6 +49,7 @@ expose:
       # note different ingress controllers may require a different ssl-redirect annotation
       # for Envoy, use ingress.kubernetes.io/force-ssl-redirect: "true" and remove the nginx lines below
       cert-manager.io/issuer: letsencrypt
+      kubernetes.io/tls-acme: "true"
       #ingress.kubernetes.io/ssl-redirect: "true"
       #ingress.kubernetes.io/proxy-body-size: "0"
       #nginx.ingress.kubernetes.io/ssl-redirect: "true"
